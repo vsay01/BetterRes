@@ -11,6 +11,7 @@
 		5B068320296C36B100889626 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06831F296C36B100889626 /* ContentView.swift */; };
 		5B068322296C36B500889626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B068321296C36B500889626 /* Assets.xcassets */; };
 		5B068325296C36B500889626 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B068324296C36B500889626 /* Preview Assets.xcassets */; };
+		5B06832D296C3F5000889626 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5B06832C296C3F5000889626 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		5B06831F296C36B100889626 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B068321296C36B500889626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B068324296C36B500889626 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5B06832C296C3F5000889626 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		5B06831C296C36B100889626 /* BetterRes */ = {
 			isa = PBXGroup;
 			children = (
+				5B06832B296C3F3000889626 /* ML */,
 				5B06831D296C36B100889626 /* BetterResApp.swift */,
 				5B06831F296C36B100889626 /* ContentView.swift */,
 				5B068321296C36B500889626 /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				5B068324296C36B500889626 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5B06832B296C3F3000889626 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				5B06832C296C3F5000889626 /* SleepCalculator.mlmodel */,
+			);
+			path = ML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				5B068320296C36B100889626 /* ContentView.swift in Sources */,
 				5B06831E296C36B100889626 /* BetterResApp.swift in Sources */,
+				5B06832D296C3F5000889626 /* SleepCalculator.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
