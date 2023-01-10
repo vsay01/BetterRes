@@ -23,9 +23,7 @@ struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
     
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
+    @State private var bedTime = ""
     
     var body: some View {
         NavigationView {
@@ -33,29 +31,37 @@ struct ContentView: View {
                 Section("When do you want to wake up?") {
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
+                        .onChange(of: wakeUp, perform: { value in
+                            calculateBedtime()
+                        });
                 }
                 
                 Section("Desired amount of sleep") {                    Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+                        .onChange(of: sleepAmount, perform: {
+                            value in
+                            calculateBedtime()
+                        })
                 }
-
+                
                 Section("Daily coffee intake") {
                     Picker("Number of cups", selection: $coffeeAmount) {
                         ForEach(1..<21) {
                             Text("\($0)")
                         }
                     }
+                    .onChange(of: coffeeAmount, perform: {
+                        value in
+                        calculateBedtime()
+                    })
                 }
                 
-                .alert(alertTitle, isPresented: $showingAlert) {
-                    Button("OK") { }
-                } message: {
-                    Text(alertMessage)
-                }
+                Text("Your ideal bedtime is \(bedTime)")
+                    .resultStyle()
             }
-            .navigationTitle("BetterRest")
-            .toolbar {
-                Button("Calculate", action: calculateBedtime)
-            }
+            .navigationTitle("Better Res")
+            .navigationBarTitleDisplayMode(.inline)
+        }.onAppear {
+            calculateBedtime()
         }
     }
     
@@ -74,14 +80,11 @@ struct ContentView: View {
             // we want is to convert that into the time they should go to bed
             let sleepTime = wakeUp - prediction.actualSleep
             
-            alertTitle = "Your ideal bedtime is…"
-            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
+            bedTime = sleepTime.formatted(date: .omitted, time: .shortened)
         } catch {
             // something went wrong!
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
+            bedTime = "Sorry, there was a problem calculating your bedtime."
         }
-        showingAlert = true
     }
 }
 
